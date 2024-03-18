@@ -1,0 +1,23 @@
+.container{
+    display: inline-flex;
+}
+.register_box{
+    width: auto;
+    height: auto;
+    background-color: pink;
+    padding: 10px;
+    margin-left: 300px;
+    display: inline-block;
+}
+h1{
+    text-align: center;
+    color: palevioletred;
+}
+.login_box{
+    width: auto;
+    height: auto;
+    display:block;
+    background-color: pink;
+    margin-left: 100px;
+    padding: 10px;
+}

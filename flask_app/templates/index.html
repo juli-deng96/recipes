@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styling.css')}}">
+</head>
+<body>
+    <body>
+       <h1> Recipe Share </h1>
+        <div class="container">
+         <div class="register_box">
+             <div class="header_1">
+                 <h2> Register </h2>
+             </div>
+             <form action="/register" method ="post">
+                 {% with messages = get_flashed_messages(category_filter=['register']) %}
+                     {% if messages %}
+                         <div class="alert alert-danger" role="alert">
+                         {% for message in messages %}
+                             <p>{{message}}</p>
+                         {% endfor %}
+                         </div>
+                     {% endif %}
+                 {% endwith %}
+                 <div class="form_group"> 
+                     <label for="first_name" class="first_name"> First Name:</label>
+                     <input type="text" name="first_name">
+                 </div>
+                 <div class="form_group"> 
+                     <label for="last_name" class="last_name" > Last Name:</label>
+                     <input type="text" name="last_name" class="last_name">
+                 </div>
+                 <div class="form_group"> 
+                     <label for="email"> Email:</label>
+                     <input type="text" name="email" class="email">
+                 </div>
+                 <div class="form_group"> 
+                     <label for="password"> Password:</label>
+                     <input type="password" name="password" class="password">
+                 </div>
+                 <div class="form_group"> 
+                     <label for="confirm_password">Confrim Password:</label>
+                     <input type="password" name="confirm_password" class="confirm">
+                 </div>
+                 <input type="submit" value="Register" class="btn btn-success">
+             </form>
+         </div>
+         <div class="login_box">
+             <div class= "header_2">
+                 <h2> Login</h2> 
+             </div>
+             <form action="/login" method="post">
+                 {% with messages = get_flashed_messages(category_filter=['login']) %}
+                     {% if messages %}
+                         <div class="alert alert-danger" role="alert">
+                         {% for message in messages %}
+                             <p>{{message}}</p>
+                         {% endfor %}
+                         </div>
+                     {% endif %}
+                 {% endwith %}
+                 <div class="form_group"> 
+                     <label for="email"> Email:</label>
+                     <input type="text" name="email" class="email">
+                 </div>
+                 <div class="form_group"> 
+                 <label for="password"> Password:</label>
+                 <input type="password" name="password" class="password">
+                 </div>
+             <input type="submit" value="Login" class="btn btn-success">
+             </form>
+         </div>
+     </div>
+</body>
+</html>

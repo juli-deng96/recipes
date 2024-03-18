@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Recipe</title>
+</head>
+<body>
+   <h1>Add a New Recipe!</h1> 
+   <a href="/recipes" class=" btn"> back to recipes</a>
+   <a href="/logout" class="btn"> Logout</a>
+   {% with messages = get_flashed_messages(category_filter=['create_recipe']) %}
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+   <form action="/recipes/new" method="post">
+    <input type="hidden" name="user_id" value="{{session.user_id}}">
+       <label for="name"> Name
+            <input type="text" name="name" class="name"> 
+       </label>
+       <label for="description"> Description
+            <input type="text" name="description"class="description">
+        </label>
+       <label for="instruction"> Instructions
+            <input type="text" name="instruction" class="instruction">
+        </label>
+       <label for="date"> Date 
+            <input type="date" name="date" class="date">
+        </label>
+       <label for="under_30"> Under 30 minutes?
+            <input type="radio" name="under_30" value="1" id="Yes">
+            <label for="yes">Yes</label>
+            <input type="radio" name="under_30" value="0" id="N0">
+            <label for="no"> No</label>
+        </label>
+        <input type="submit" value="submit">
+   </form>
+</body>
+</html>

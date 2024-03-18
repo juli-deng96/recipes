@@ -1,0 +1,30 @@
+h1{
+    text-align: center;
+    color: rgb(232, 117, 157);
+}
+table{
+    background-color: pink;
+    display: block;
+    width: fit-content;
+    margin-left: 350px;
+    margin-top: 20px;
+    justify-content: center;
+}
+th{
+   padding-left: 50px;
+   padding-top: 10px;
+   padding-right: 50px;
+   padding-bottom: 10px;
+   border-right: solid 2px black;
+}
+.buttons{
+    display:inline;
+    margin-left: 1100px;
+}
+.subtitle{
+    text-align: center;
+    font-size: 20px;
+}
+.btn_create{
+    margin-right: 50px;
+}

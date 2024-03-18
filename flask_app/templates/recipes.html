@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Recipes</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='recipe_styling.css')}}">
+</head>
+<body>
+    <h1> Welcome, {{ user.first_name }}</h1>
+    <div class="buttons"> 
+        <a href="/recipes/new" class="btn_create"> + Create</a>
+        <a href="/logout" class="btn"> Logout</a>
+    </div>
+    <input type="hidden" name="user_id" value="{{session.user_id}}">
+     <p class="subtitle"> All Posted Recipes:</p>
+     <table>
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> Under 30 Minutes </th>
+                <th> Posted By</th>
+                <th> Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for recipe in recipes %}
+            <tr> 
+                <td>{{recipe.name}} </td>
+                {% if recipe.under_30 == 0 %}
+                    <td> No </td>
+                    {% elif recipe.under_30 == 1 %}
+                    <td> Yes</td>
+                {% endif %}
+                <td> {{recipe.host.first_name}} {{recipe.host.last_name}}</td>
+                <td> 
+                    <a href="/recipes/view//{{recipe.id}}">View</a>
+                        {% if session.user_id == recipe.host_id %}
+                            <a href="/recipes/edit//{{recipe.id}}">Edit</a>
+                            <a href="/recipes/delete//{{recipe.id}}">Delete</a>
+                        {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+</head>
+<body>
+   <h1>Edit Recipe!</h1> 
+   <a href="/recipes" class=" btn"> back to recipes</a>
+   <a href="/logout" class="btn"> Logout</a>
+   {% with messages = get_flashed_messages(category_filter=['create_recipe']) %}
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+   <form action="/recipes/edit" method="post">
+    <input type="hidden" name="id" value="{{recipe.id}}">
+       <label for="name"> Name
+            <input type="text" name="name" class="name" value="{{recipe.name}}"> 
+       </label>
+       <label for="description"> Description
+            <input type="text" name="description"class="description" value="{{recipe.description}}">
+        </label>
+       <label for="instruction"> Instructions
+            <input type="text" name="instruction" class="instruction" value="{{recipe.instruction}}">
+        </label>
+       <label for="date"> Date 
+            <input type="date" name="date" class="date" value="{{recipe.date}}">
+        </label>
+        <p> Under 30 minutes?
+            {% if recipe.under_30 == 1 %}
+            <input type="radio" name="under_30" value="1" id="yes" checked>
+            <label for="yes">Yes</label>
+            <input type="radio" name="under_30" value="0" id="no">
+            <label for="no"> No</label>
+            {% else %}
+            <input type="radio" name="under_30" value="1" id="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" name="under_30" value="0" id="no" checked>
+            <label for="no"> No</label>
+            {% endif %}
+       </p>
+        <input type="submit" value="submit">
+   </form>
+</body>
+</html>
